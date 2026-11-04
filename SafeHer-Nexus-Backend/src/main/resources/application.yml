@@ -1,6 +1,8 @@
 spring:
   application:
     name: safeher-nexus-backend
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
 
   datasource:
     url: ${DB_URL}
@@ -27,7 +29,8 @@ spring:
         format_sql: false
 
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${PORT:${SERVER_PORT:8080}}
+  shutdown: graceful
   ssl:
     enabled: ${SSL_ENABLED:false}
     key-store: ${SSL_KEYSTORE_PATH:classpath:keystore.p12}
