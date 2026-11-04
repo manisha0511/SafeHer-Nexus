@@ -1,0 +1,50 @@
+HELP.md
+target/
+build/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IDEs & Tools ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.idea
+*.iws
+*.iml
+*.ipr
+.vscode/
+
+### Environment Variables & Secrets ###
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.properties
+
+### Keystores & Certificates (NEVER commit) ###
+*.p12
+*.jks
+*.keystore
+*.key
+*.pem
+*.crt
+*.der
+*.cer
+
+### Database Backups & Dumps (NEVER commit) ###
+backups/
+**/backups/
+*.dump
+*.bak
+*.sql.gz
+*.sql
+!src/main/resources/db/schema-mysql-reference.sql
+
+### OS ###
+.DS_Store
+Thumbs.db

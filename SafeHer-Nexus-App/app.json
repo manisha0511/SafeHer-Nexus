@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "SafeHer Nexus",
+    "slug": "safeher-nexus-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0F172A"
+    },
+    "android": {
+      "package": "com.safehernexus.app",
+      "versionCode": 1,
+      "usesCleartextTraffic": true,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0F172A"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "VIBRATE",
+        "CALL_PHONE"
+      ]
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "SafeHer Nexus uses your foreground location to capture coordinates and provide real-time updates when an SOS alert is active.",
+          "locationAlwaysAndWhenInUsePermission": "SafeHer Nexus uses background location to keep your trusted emergency contacts updated with your live location while an emergency SOS alert is active."
+        }
+      ],
+      "expo-asset"
+    ]
+  }
+}

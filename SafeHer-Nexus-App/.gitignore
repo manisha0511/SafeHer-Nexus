@@ -1,0 +1,43 @@
+# Dependencies & Build Cache
+node_modules/
+.expo/
+dist/
+build/
+.gradle/
+.kotlin/
+.cxx/
+npm-debug.*
+yarn-error.log*
+web-build/
+
+# Signing keys & Keystores (NEVER commit)
+*.jks
+*.p8
+*.p12
+*.key
+*.keystore
+*.pem
+*.crt
+*.mobileprovision
+*.orig.*
+
+# Environment & Local configuration
+.env
+.env.*
+!.env.example
+local.properties
+
+# Binary Artifacts
+*.apk
+*.aab
+*.jsbundle
+
+# Backups & Temp files
+*.bak
+*.swp
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

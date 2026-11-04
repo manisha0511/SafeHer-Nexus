@@ -1,0 +1,63 @@
+# ==============================================================================
+# SafeHer Nexus Monorepo Root .gitignore
+# Prevents accidental commits of credentials, secrets, build outputs, and binaries.
+# ==============================================================================
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+
+# Environment Variables & Secrets (NEVER commit)
+.env
+.env.*
+*.env
+!.env.example
+application-local.yml
+application-local.properties
+local.properties
+
+# SSL / TLS Keystores, Certificates & Private Signing Keys (NEVER commit)
+*.p12
+*.jks
+*.keystore
+*.key
+*.p8
+*.pem
+*.crt
+*.der
+*.cer
+*.mobileprovision
+
+# Database Backups & Dumps (NEVER commit live data)
+backups/
+**/backups/
+*.dump
+*.bak
+*.sql.gz
+*.sql
+!SafeHer-Nexus-Backend/src/main/resources/db/schema-mysql-reference.sql
+
+# Mobile & Backend Build Outputs
+**/target/
+**/node_modules/
+**/.expo/
+**/dist/
+**/web-build/
+**/build/
+**/.gradle/
+**/.kotlin/
+**/.cxx/
+npm-debug.*
+yarn-error.log*
+
+# Mobile Binary Artifacts (Keep repository lightweight)
+*.apk
+*.aab
+*.jsbundle

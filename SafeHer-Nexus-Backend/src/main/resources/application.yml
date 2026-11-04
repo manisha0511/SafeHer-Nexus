@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: safeher-nexus-backend
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: SafeHerHikariCP
+      maximum-pool-size: ${DB_POOL_MAX_SIZE:10}
+      minimum-idle: ${DB_POOL_MIN_IDLE:5}
+      connection-timeout: ${DB_POOL_CONN_TIMEOUT:20000}
+      idle-timeout: ${DB_POOL_IDLE_TIMEOUT:300000}
+      max-lifetime: ${DB_POOL_MAX_LIFETIME:1200000}
+
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      # Safe default: 'validate' never drops, alters, or resets existing tables.
+      # Override with DB_DDL_AUTO=update only after confirming a brand-new database.
+      ddl-auto: ${DB_DDL_AUTO:validate}
+    properties:
+      hibernate:
+        format_sql: false
+
+server:
+  port: ${SERVER_PORT:8080}
+  ssl:
+    enabled: ${SSL_ENABLED:false}
+    key-store: ${SSL_KEYSTORE_PATH:classpath:keystore.p12}
+    key-store-password: ${SSL_KEYSTORE_PASSWORD:}
+    key-store-type: PKCS12
+    key-alias: ${SSL_KEY_ALIAS:safehernexus}
+  error:
+    include-message: always
+    include-binding-errors: never
+    include-stacktrace: never
+
+app:
+  version: 0.2.0
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:8080,http://localhost:19006,http://10.0.2.2:8080}
+  security:
+    jwt:
+      secret: ${JWT_SECRET}
+      expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  twilio:
+    enabled: ${TWILIO_ENABLED:false}
+    account-sid: ${TWILIO_ACCOUNT_SID:}
+    auth-token: ${TWILIO_AUTH_TOKEN:}
+    from-phone-number: ${TWILIO_PHONE_NUMBER:${TWILIO_FROM_PHONE_NUMBER:}}
+    status-callback-url: ${TWILIO_STATUS_CALLBACK_URL:}
+  ai:
+    enabled: ${AI_ENABLED:false}
+    provider: ${AI_PROVIDER:gemini}
+    api-key: ${AI_API_KEY:}
+    model: ${AI_MODEL:gemini-1.5-flash}
+    endpoint: ${AI_ENDPOINT:https://generativelanguage.googleapis.com/v1beta}
+  route:
+    provider: ${ROUTE_PROVIDER:osrm}
+    osrm-base-url: ${OSRM_BASE_URL:https://router.project-osrm.org}
+    google-api-key: ${GOOGLE_MAPS_API_KEY:}
+    timeout-ms: ${ROUTE_TIMEOUT_MS:5000}
+
+logging:
+  level:
+    root: INFO
+    com.safehernexus.backend: INFO
+    org.springframework.security: WARN

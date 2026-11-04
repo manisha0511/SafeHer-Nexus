@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:safeher_nexus_test_db;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+
+app:
+  version: 0.2.0-TEST
+  security:
+    jwt:
+      secret: test_only_jwt_signing_key_must_be_at_least_32_bytes_long_for_hmac_sha256
+      expiration-ms: 3600000
